@@ -1,0 +1,6 @@
+DROP TABLE NDI_MessageDesFruits;
+DROP TABLE NDI_Etapes;
+DROP TABLE NDI_MessageFruits;
+DROP TABLE NDI_Choix;
+DROP TABLE NDI_Fruits;
+DROP TABLE NDI_Joueur;
