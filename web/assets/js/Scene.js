@@ -12,6 +12,9 @@ class Scene {
         for (let i = 0; i < this.objects.length; i++) {
 
             this.objects[i].update();
+            if(this.objects[i] instanceof Pnj){
+                this.objects[i].collide(player);
+            }
         }
 
     }

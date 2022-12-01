@@ -1,10 +1,11 @@
-class Sprite {
+class Player {
     constructor({pos, velocity, bounds}) {
         this.pos = pos;
         this.velocity = velocity;
-        this.offset = 0;
+        this.offset = pos.y;
         this.bounds = bounds;
         this.nbJump = 0;
+        this.nbPepins = 0;
     }
 
     draw() {
@@ -42,6 +43,11 @@ class Sprite {
         }else{
             player.resetJump();
         }
+    }
+
+    winPins() {
+        this.nbPepins++;
+        document.getElementById("pepin").innerText = this.nbPepins + " : pepins";
     }
 
 }

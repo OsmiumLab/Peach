@@ -6,14 +6,16 @@ canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
 
-const player = new Sprite({
-    pos: {x: 0, y: 0},
-    velocity: {x:10, y: 10},
-    bounds : {
+const player = new Player({
+    pos: {x: canvas.width/2, y: 500},
+    velocity: {x: 10, y: 10},
+    bounds: {
         height: 50,
         width: 50
     }
 });
+
+const pnj = new Pnj({posX: 0, bounds: {height: 50, width: 50}});
 
 const KEYS = [];
 
@@ -65,27 +67,28 @@ window.addEventListener('resize', () => {
 
 });
 
-const scene = new Scene('blue',2);
+const scene = new Scene('blue', 2);
 scene.addObject(player);
+scene.addObject(pnj);
 
+document.addEventListener("mousedown", animate);
 
 function animate() {
     window.requestAnimationFrame(animate);
-    if(KEYS['up']) {
+    if (KEYS['up']) {
 
         player.jump();
     }
-    if(KEYS['down']) {
+    if (KEYS['down']) {
 
     }
-    if(KEYS['left']) {
+    if (KEYS['left']) {
         player.moveLeft();
     }
-    if(KEYS['right']) {
+    if (KEYS['right']) {
         player.moveRight();
     }
     player.fall();
     scene.update();
 }
 
-animate();
