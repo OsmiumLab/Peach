@@ -8,7 +8,11 @@ canvas.width = window.innerWidth;
 
 const player = new Sprite({
     pos: {x: 0, y: 0},
-    velocity: {x:10, y: 10}
+    velocity: {x:10, y: 10},
+    bounds : {
+        height: 50,
+        width: 50
+    }
 });
 
 const KEYS = [];
@@ -60,9 +64,6 @@ window.addEventListener('resize', () => {
     canvas.width = window.innerWidth * 2;
 
 });
-
-
-
 
 const scene = new Scene('blue',2);
 scene.addObject(player);

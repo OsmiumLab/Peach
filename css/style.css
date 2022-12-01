@@ -1,3 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 body{
     margin: 0;
+}
+
+p, strong{
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+strong{
+    margin-right: 10px;
+    font-size : 2em;
+    -webkit-text-stroke: 1px #fff;
+}
+
+#objectif{
+    position: fixed;
+    left: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#pepin{
+    position: fixed;
+    right : 20px;
 }

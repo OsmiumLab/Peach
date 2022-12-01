@@ -1,9 +1,10 @@
 class Sprite {
-    constructor({pos, velocity}) {
+    constructor({pos, velocity, bounds}) {
         this.pos = pos;
         this.velocity = velocity;
         this.offset = 0;
-        this.bounds = {width: 100, height: 100};
+        this.bounds = bounds;
+        this.nbJump = 0;
     }
 
     draw() {
@@ -17,8 +18,14 @@ class Sprite {
     }
 
     jump(){
-        this.offset += this.velocity.y*4;
+        if(this.nbJump<10){
+            this.offset += this.velocity.y*4;
+            this.nbJump++;
+        }
+    }
 
+    resetJump(){
+        this.nbJump = 0;
     }
 
     moveLeft() {
@@ -30,8 +37,10 @@ class Sprite {
     }
 
     fall() {
-        if(this.pos.y < canvas.height-100) {
+        if(this.pos.y < canvas.height-100-this.bounds.height) {
             this.offset -= this.velocity.y;
+        }else{
+            player.resetJump();
         }
     }
 
