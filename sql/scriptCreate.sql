@@ -2,9 +2,6 @@ CREATE TABLE NDI_Joueur(
    idJoueur INT,
    nomUtilisateur VARCHAR(100) NOT NULL,
    choixFruit VARCHAR(50) NOT NULL,
-   nbPepin INT NOT NULL,
-   nbPelure INT NOT NULL,
-   nbConfiture INT NOT NULL,
    PRIMARY KEY(idJoueur)
 );
 

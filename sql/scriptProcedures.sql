@@ -21,9 +21,9 @@ CREATE SEQUENCE ndi_seq_messages_fruits_id START WITH 1 INCREMENT BY 1;
 -- # Procedures : AJOUTER
 -- ############################################################
 DROP PROCEDURE NDIAjouterJoueur;
-CREATE OR REPLACE PROCEDURE NDIAjouterJoueur(p_nomUtilisateur NDI_JOUEUR.nomUtilisateur%TYPE, p_choixFruit NDI_JOUEUR.CHOIXFRUIT%TYPE, p_nbPepin NDI_JOUEUR.NBPEPIN%TYPE, p_nbPelure NDI_JOUEUR.NBPELURE%TYPE, p_nbConfiture NDI_JOUEUR.NBCONFITURE%TYPE) IS
+CREATE OR REPLACE PROCEDURE NDIAjouterJoueur(p_nomUtilisateur NDI_JOUEUR.nomUtilisateur%TYPE, p_choixFruit NDI_JOUEUR.CHOIXFRUIT%TYPE) IS
 BEGIN
-    INSERT INTO NDI_JOUEUR VALUES (ndi_seq_joueur_id.nextval, p_nomUtilisateur, p_choixFruit, p_nbPepin, p_nbPelure, p_nbConfiture);
+    INSERT INTO NDI_JOUEUR VALUES (ndi_seq_joueur_id.nextval, p_nomUtilisateur, p_choixFruit);
 END;
 
 DROP PROCEDURE NDIAjouterChoix;
@@ -59,13 +59,6 @@ END;
 -- ############################################################
 -- # Procedures : MODIFIER
 -- ############################################################
-DROP PROCEDURE NDIModifierJoueur;
-CREATE OR REPLACE PROCEDURE NDIModifierJoueur(p_idJoueur NDI_JOUEUR.IDJOUEUR%TYPE, p_nbPepin NDI_JOUEUR.NBPEPIN%TYPE, p_nbPelure NDI_JOUEUR.NBPELURE%TYPE, p_nbConfiture NDI_JOUEUR.NBCONFITURE%TYPE) IS
-BEGIN
-    UPDATE NDI_JOUEUR SET nbPepin = p_nbPepin, nbPelure = p_nbPelure, nbConfiture = p_nbConfiture
-    WHERE idJoueur = p_idJoueur;
-END;
-
 DROP PROCEDURE NDIModifierFruits;
 CREATE OR REPLACE PROCEDURE NDIModifierFruits(p_idFruit NDI_FRUITS.IDFRUIT%TYPE, p_tauxVerreDeTerre NDI_FRUITS.TAUXVERREDETERRE%TYPE, p_nbInteractions NDI_FRUITS.NBINTERACTIONS%TYPE) IS
 BEGIN
