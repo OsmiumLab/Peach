@@ -12,4 +12,6 @@ $action = $_GET['action'] ?? 'createJoueur';
 
 if (method_exists(ControllerJoueur::class, $action)) {
     ControllerJoueur::$action();
+} else {
+    ControllerJoueur::pageIntrouvable();
 }
