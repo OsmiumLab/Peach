@@ -1,9 +1,9 @@
 <html>
     <head>
         <title>Peach and Pips</title>
-        <style type="text/css">
+        <style>
             body {
-                background-image: url('../../../Peach/web/assets/js/images/backfull.png');
+                background-image: url('js/images/backfull.png');
                 background-repeat: no-repeat;
                 background-position: center;
             }
@@ -50,7 +50,7 @@
     <body>
         <!--PHARMACIE-->
         <div class="flex">
-            <img src="../../web/assets/js/images/Sante.png">
+            <img src="js/images/Sante.png">
             <div class="align">
                 <p>La Pharmacie</p>
                 <p>L'endoit où vous pourrez acheter des préservatifs, aller demander conseil pour un dépistage et des informations sur les maladies sexuellement transmissibles. Renseignez-vous !</p>
@@ -60,7 +60,7 @@
 
         <!--ORANGE-->
         <div class="flex">
-            <img src="../../web/assets/js/images/Orange4.png">
+            <img src="js/images/Orange4.png">
             <div class="align">
                 <p>L'Orange</p>
                 <p>Il avait un taux d'avoir le Sida haut mais peu de relations sexuelles avec d'autres. Se protéger via des préservatifs est une bonne solution !</p>
@@ -70,7 +70,7 @@
 
         <!--POIRE-->
         <div class="flex">
-            <img src="../../web/assets/js/images/Poire4.png">
+            <img src="js/images/Poire4.png">
             <div class="align">
                 <p>La Poire</p>
                 <p>Avoir un taux d'avoir le Sida faible ainsi qu'un nombre de relations sexuelles faible reste tout de même risqué. Pour en avoir le coeur net, dépistez-vous !</p>
@@ -80,7 +80,7 @@
 
         <!--KIWI-->
         <div class="flex">
-            <img src="../../web/assets/js/images/Kiwi4.png">
+            <img src="js/images/Kiwi4.png">
             <div class="align">
                 <p>Le Kiwi</p>
                 <p>Avoir un taux d'avoir le Sida nul ainsi qu'un nombre de relations sexuelles nul reste tout de même risqué. Pour en avoir le coeur net, dépistez-vous !</p>
@@ -90,7 +90,7 @@
 
         <!--TOMATE-->
         <div class="flex">
-            <img src="../../web/assets/js/images/Tomate4.png">
+            <img src="js/images/Tomate4.png">
             <div class="align">
                 <p>La Tomate</p>
                 <p>Avoir un taux élevé d'avoir le Sida ainsi qu'un grand nombre de relations sexuelles est risqué vis-à-vis de la séroposivité. Renseignez vous sur le Sida !</p>
@@ -100,7 +100,7 @@
 
         <!--POMME-->
         <div class="flex">
-            <img src="../../web/assets/js/images/Pomme4.png">
+            <img src="js/images/Pomme4.png">
             <div class="align">
                 <p>La Pomme</p>
                 <p>Elle avait un taux d'avoir le Sida haut et peu de relations sexuelles avec d'autres. Se protéger via des préservatifs est une bonne solution !</p>
