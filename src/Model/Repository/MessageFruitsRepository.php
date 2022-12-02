@@ -34,4 +34,9 @@ class MessageFruitsRepository extends AbstractRepository
     {
         return "NDIAJOUTERMESSAGE";
     }
+
+    protected function getSequence(): string
+    {
+        return "NDI_SEQ_MESSAGES_FRUITS_ID";
+    }
 }

@@ -36,4 +36,9 @@ class EtapesRepository extends AbstractRepository
     {
         return "NDIAJOUTERETAPE";
     }
+
+    protected function getSequence(): string
+    {
+        return "NDI_ETAPES_SEQ_ID";
+    }
 }

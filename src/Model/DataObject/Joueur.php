@@ -16,9 +16,9 @@ class Joueur extends AbstractDataObject {
 
     public function formatTableau(): array {
         return array(
-            "IDJOUEUR" => $this->getIdJoueur(),
-            "NOMUTILISATEUR" => $this->getNomUtilisateur(),
-            "CHOIXFRUIT" => $this->getChoixFruit()
+            ":idJoueur" => $this->getIdJoueur(),
+            ":nomUtilisateur" => $this->getNomUtilisateur(),
+            ":choixFruit" => $this->getChoixFruit()
         );
     }
 

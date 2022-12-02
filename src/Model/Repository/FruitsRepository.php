@@ -23,17 +23,23 @@ class FruitsRepository extends AbstractRepository
             $objetFormatTableau["NOMFRUIT"],
             $objetFormatTableau["TAUXVERREDETERRE"],
             $objetFormatTableau["NBINTERACTIONS"],
-            $objetFormatTableau["NBPEPINS"]
+            $objetFormatTableau["NBPEPINS"],
+            $objetFormatTableau["IDMESSAGEFRUITS"],
         );
     }
 
     protected function getNomsColonnes(): array
     {
-        return array("IDFRUIT", "NOMFRUIT", "TAUXVERREDETERRE", "NBINTERACTIONS", "NBPEPINS");
+        return array("IDFRUIT", "NOMFRUIT", "TAUXVERREDETERRE", "NBINTERACTIONS", "NBPEPINS", "IDMESSAGEFRUITS");
     }
 
     protected function getProcedureInsert(): string
     {
         return "NDIAJOUTERFRUITS";
+    }
+
+    protected function getSequence(): string
+    {
+        return "NDI_SEQ_FRUITS_ID";
     }
 }

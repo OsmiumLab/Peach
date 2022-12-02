@@ -34,4 +34,9 @@ class ChoixRepository extends AbstractRepository
     {
         return "NDIAJOUTERCHOIX";
     }
+
+    protected function getSequence(): string
+    {
+        return "NDI_CHOIX_SEQ_ID";
+    }
 }

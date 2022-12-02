@@ -29,4 +29,6 @@ abstract class AbstractRepository {
 
     protected abstract function getProcedureInsert(): string;
 
+    protected abstract function getSequence(): string;
+
 }
