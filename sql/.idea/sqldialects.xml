@@ -3,6 +3,7 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/scriptCreate.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/scriptDrop.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/scriptInsert.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/scriptProcedures.sql" dialect="Oracle" />
   </component>
 </project>
