@@ -23,6 +23,7 @@ class ControllerJoueur {
     public static function createdJoueur() : void {
         $joueur = new Joueur(0, $_POST['nomUtilisateur'], $_POST['choixFruit']);
         (new JoueurRepository())->sauvegarder($joueur);
+        self::afficheVue('index.html');
     }
 
     public static function createChoix() : void {
@@ -33,5 +34,9 @@ class ControllerJoueur {
     public static function createEtapes() : void {
         $etapes = new Etapes(0, $_POST['idFruit'], $_POST['idChoix'], $_GET['idJoueur']);
         (new EtapesRepository())->sauvegarder($etapes);
+    }
+
+    public static function pageIntrouvable() : void {
+        self::afficheVue('error.php');
     }
 }
