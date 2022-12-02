@@ -23,7 +23,7 @@ class ControllerJoueur {
     public static function createdJoueur() : void {
         $joueur = new Joueur(0, $_POST['nomUtilisateur'], $_POST['choixFruit']);
         (new JoueurRepository())->sauvegarder($joueur);
-        self::afficheVue('index.html');
+        require __DIR__ . "/../../web/assets/index.html";
     }
 
     public static function createChoix() : void {
