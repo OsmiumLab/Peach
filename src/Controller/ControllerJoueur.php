@@ -26,12 +26,12 @@ class ControllerJoueur {
     }
 
     public static function createChoix() : void {
-        $choix = new Choix((int)null, $_POST['texteChoix']);
+        $choix = new Choix(0, $_POST['texteChoix']);
         (new ChoixRepository())->sauvegarder($choix);
     }
 
     public static function createEtapes() : void {
-        $etapes = new Etapes((int)null, $_POST['idFruit'], $_POST['idChoix'], $_GET['idJoueur']);
+        $etapes = new Etapes(0, $_POST['idFruit'], $_POST['idChoix'], $_GET['idJoueur']);
         (new EtapesRepository())->sauvegarder($etapes);
     }
 }
