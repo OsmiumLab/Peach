@@ -53,7 +53,7 @@ document.addEventListener('keydown', (e) => {
             break;
     }
 });
-
+let nbKeyEnter = 0;
 
 document.addEventListener('keyup', (e) => {
     switch (e.key) {
@@ -61,7 +61,11 @@ document.addEventListener('keyup', (e) => {
             KEYS['up'] = false;
             break;
         case 'ArrowDown':
+            if(KEYS['up']){
+                alert("hum la bonne fraise");
+            }
             KEYS['down'] = false;
+
             break;
         case 'ArrowLeft':
             KEYS['left'] = false;
@@ -104,7 +108,9 @@ scene.addObject(pnj);
 
 //listen to click once and use animate function
 
-
+function endGAMEMOTHERFUCKER(){
+    document.location.href="/Peach/web/end.php";
+}
 
 function loop(){
     if (KEYS['up']) {
@@ -152,6 +158,9 @@ function loop(){
     }
     player.fall();
     scene.update();
+    if(player.nbPepins>20){
+        endGAMEMOTHERFUCKER();
+    }
 }
 
 

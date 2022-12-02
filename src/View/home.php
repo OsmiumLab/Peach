@@ -3,7 +3,7 @@
         <title>Peach and Pips</title>
         <style type="text/css">
             body {
-                background-image: url('../../../Peach/web/assets/js/images/backfull.png');
+                background-image: url('js/images/backfull.png');
                 background-repeat: no-repeat;
                 background-position: center;
             }
