@@ -25,7 +25,7 @@ const pnj = new Pnj({
         choice1: "Je suis timide",
         choice2: "Faisons l'amour",
     },
-    name : "Tomate",
+    name : "Kiwi",
     infected : 1
 });
 
@@ -94,9 +94,12 @@ window.addEventListener('resize', () => {
 
 });
 
+
+
 const scene = new Scene('./images/back.png', 2);
 scene.addObject(player);
-scene.addObject(pnj)
+scene.addObject(pnj);
+
 
 //listen to click once and use animate function
 canvas.addEventListener('click', () => {

@@ -7,7 +7,7 @@ class Scene {
             offsetFg:0,
         };
 
-        this.backgroundSrc = './js/images/back.png';
+        this.backgroundSrc = './js/images/backfull.png';
         this.foregroundSrc = './js/images/front.png';
         this.middlegroundSrc = './js/images/mid.png';
 
@@ -15,14 +15,15 @@ class Scene {
 
     update() {
         this.background  = new Image();
+        /*
         this.middleground  = new Image();
-        this.foreground  = new Image();
+        this.foreground  = new Image();*/
         this.background.src = this.backgroundSrc;
-        this.middleground.src = this.middlegroundSrc;
-        this.foreground.src = this.foregroundSrc;
+        /*this.middleground.src = this.middlegroundSrc;
+        this.foreground.src = this.foregroundSrc;*/
         ctx.drawImage(this.background, this.offsets.offsetBg, 0, canvas.width, canvas.height);
-        ctx.drawImage(this.middleground, this.offsets.offsetMg, 0, canvas.width, canvas.height);
-        ctx.drawImage(this.foreground, this.offsets.offsetFg, 0, canvas.width, canvas.height);
+        /*ctx.drawImage(this.middleground, this.offsets.offsetMg, 0, canvas.width, canvas.height);
+        ctx.drawImage(this.foreground, this.offsets.offsetFg, 0, canvas.width, canvas.height);*/
         for (let i = 0; i < this.objects.length; i++) {
             this.objects[i].update();
             if(this.objects[i] instanceof Pnj){

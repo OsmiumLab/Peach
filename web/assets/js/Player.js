@@ -113,6 +113,8 @@ class Player {
                 }
 
             }
+            const rideau = new Rideau();
+            scene.addObject(rideau);
         } else {
             this.nbPepins += currentPnj.nbPepins;
         }
