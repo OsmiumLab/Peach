@@ -122,7 +122,7 @@ class Pnj {
             if (!this.triggered) {
                 document.getElementById("keysInstruction").classList.remove("hidden");
                 document.getElementById("keysInstruction").style.left = this.pos.x + player.pos.x * 0.1 + "px";
-                document.getElementById("keysInstruction").style.top = this.pos.y - this.bounds.height + "px";
+                document.getElementById("keysInstruction").style.top = this.pos.y-20 - this.bounds.height + "px";
                 if (KEYS['e']) {
                     player.winPins(1);
                     currentPnj = this;

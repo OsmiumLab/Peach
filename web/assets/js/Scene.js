@@ -36,4 +36,13 @@ class Scene {
     addObject(object) {
         this.objects.push(object);
     }
+
+    removePnj() {
+        for(let i = 0 ; i<this.objects.length;i++){
+            if(this.objects[i] instanceof Pnj){
+                this.objects.splice(i,1);
+            }
+        }
+
+    }
 }

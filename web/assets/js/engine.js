@@ -22,8 +22,8 @@ const pnj = new Pnj({
     posX: 0,
     bounds: {height: 50, width: 50},
     choices: {
-        choice1: "Je suis timide",
-        choice2: "Faisons l'amour",
+        choice1: "Ramener sa fraise",
+        choice2: "Croquer la pomme",
     },
     name : "Kiwi",
     infected : 1
@@ -117,8 +117,15 @@ function loop(){
     }
     if (KEYS['left']) {
 
-        player.velocity.x=Math.abs(player.velocity.x)*-1;
-        player.move();
+
+        if(player.pos.x<0){
+            player.pos.x = 0;
+            player.move();
+            scene.removePnj()
+        }else{
+            player.velocity.x=Math.abs(player.velocity.x)*-1;
+            player.move();
+        }
         /*
         scene.offsets.offsetBg++;
         scene.offsets.offsetMg+=2;
