@@ -17,7 +17,5 @@ class Rideau{
             this.altitude += 30;
         }
 
-
-
     }
 }

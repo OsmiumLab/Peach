@@ -5,6 +5,7 @@ const ctx = canvas.getContext('2d');
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
+const SUITESCENE = ["FORET", "BAR","BIBLIO","BAR"];
 
 const player = new Player({
     pos: {x: canvas.width / 2, y: 500},
@@ -15,18 +16,18 @@ const player = new Player({
     },
     scale: 1,
     framesMax: 4
-
 });
 
 const pnj = new Pnj({
-    posX: 0,
+    posX: 1000,
     bounds: {height: 50, width: 50},
     choices: {
         choice1: "Ramener sa fraise",
         choice2: "Croquer la pomme",
     },
     name : "Kiwi",
-    infected : 1
+    infected : 1,
+
 });
 
 let currentPnj;
@@ -96,15 +97,13 @@ window.addEventListener('resize', () => {
 
 
 
-const scene = new Scene('./images/back.png', 2);
+const scene = new Scene( 0);
 scene.addObject(player);
 scene.addObject(pnj);
 
 
 //listen to click once and use animate function
-canvas.addEventListener('click', () => {
-    animate();
-}, {once: true});
+
 
 
 function loop(){
@@ -116,26 +115,31 @@ function loop(){
 
     }
     if (KEYS['left']) {
-
-
+        player.velocity.x=Math.abs(player.velocity.x)*-1;
+        player.move();
         if(player.pos.x<0){
-            player.pos.x = 0;
-            player.move();
-            scene.removePnj()
-        }else{
-            player.velocity.x=Math.abs(player.velocity.x)*-1;
-            player.move();
+            if(scene.sceneNb-1>=0){
+                scene.changeScene(scene.sceneNb-1);
+                player.pos.x = canvas.width - player.bounds.width;
+            }else{
+                player.pos.x = 0;
+                player.move();
+            }
         }
-        /*
-        scene.offsets.offsetBg++;
-        scene.offsets.offsetMg+=2;
-        scene.offsets.offsetFg+=5;
 
-         */
     }
     if (KEYS['right']) {
         player.velocity.x=Math.abs(player.velocity.x);
         player.move();
+        if(player.pos.x>canvas.width-player.bounds.width){
+            if(scene.sceneNb+1 < SUITESCENE.length){
+                scene.changeScene(scene.sceneNb+1 );
+                player.pos.x = 0;
+            }else{
+                player.pos.x = canvas.width;
+                player.move();
+            }
+        }
         /*
         scene.offsets.offsetBg--;
         scene.offsets.offsetMg-=2;
@@ -167,3 +171,4 @@ function animate() {
 }
 
 
+animate();
