@@ -1,12 +1,13 @@
 <style type="text/css">
-    p {
+    body {
+        background-color: blue;
+    }
+
+    h1 {
         font-family: 'VT323', monospace;
-        font-size: 60px;
         color: #fff;
         text-align: center;
     }
 </style>
 
-<p>
-    Erreur dans la demande
-</p>
+<h1>Erreur 404</h1>

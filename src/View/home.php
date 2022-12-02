@@ -63,7 +63,7 @@
     </div>
     <div style="padding-top: 30px">
         <p>
-            <input type="submit" value="Envoyer" />
+            <input type="submit" value="JOUER" />
         </p>
     </div>
 </form>
