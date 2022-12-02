@@ -49,6 +49,8 @@ class Player {
 
     }
 
+
+
     draw() {
         switch (this.state) {
             case "idle":
@@ -71,6 +73,11 @@ class Player {
 
 
     update() {
+        if(this.protected){
+            document.getElementById("protection").innerText = "Pluché";
+        }else{
+            document.getElementById("protection").innerText = "Epluché";
+        }
         this.pos.y = canvas.height - 100 - this.bounds.height - this.offset;
         this.draw();
     }
@@ -92,8 +99,7 @@ class Player {
     chose(choice, nb) {
         this.isChoosing = false;
         this.history.push({pnj: currentPnj.name, choice: choice});
-        console.log(currentPnj.nbPepins)
-        document.getElementById("choix").style.display = "none";
+        document.getElementById("choix").classList.add("hidden");
         if (nb === 2) {
             if (this.protected) {
                 if (Math.random() > 0.85) {
@@ -114,12 +120,12 @@ class Player {
 
             }
             const rideau = new Rideau();
+
             scene.addObject(rideau);
         } else {
             this.nbPepins += currentPnj.nbPepins;
         }
 
-        console.log(this.history, this.nbPepins, this.infecte);
     }
 
     resetJump() {

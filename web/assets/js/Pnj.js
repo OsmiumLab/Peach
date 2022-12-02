@@ -7,7 +7,11 @@ class Pnj {
         this.choices = choices;
         this.name = name;
         this.infected = infected;
-
+        if(this.infected) {
+            this.legend = "Je suis perimé mais quand même croquable !";
+        }else{
+            this.legend = "Je suis frais et croquable !";
+        }
         this.curFrame = 0;
     }
 
@@ -38,10 +42,13 @@ class Pnj {
                 this.curFrame++;
                 if (this.curFrame > 25) this.curFrame = 0;
                 break;
-            default:
-                console.log("test");
-                break;
 
+
+        }
+        if(this.infected) {
+            this.legend = "Je suis perimé mais quand même croquable !";
+        }else{
+            this.legend = "Je suis frais et croquable !";
         }
     }
 
@@ -120,6 +127,7 @@ class Pnj {
             player.pos.x + player.bounds.width > this.pos.x) {
             // collision detected!
             if (!this.triggered) {
+                document.getElementById("keysInstruction").innerHTML = "<p>Appuyez sur la touche 'E' pour parler" +"<br>"+ this.legend+"</p>";
                 document.getElementById("keysInstruction").classList.remove("hidden");
                 document.getElementById("keysInstruction").style.left = this.pos.x + player.pos.x * 0.1 + "px";
                 document.getElementById("keysInstruction").style.top = this.pos.y-20 - this.bounds.height + "px";
@@ -129,7 +137,7 @@ class Pnj {
                     document.getElementById("choix").classList.remove("hidden");
                     document.getElementById("choix1").innerText = this.choices.choice1;
                     document.getElementById("choix2").innerText = this.choices.choice2;
-                    this.triggered = true;
+
                     player.isChoosing = true;
                 }
             } else {
@@ -143,7 +151,6 @@ class Pnj {
             if (!document.getElementById("keysInstruction").classList.contains("hidden")) {
                 document.getElementById("keysInstruction").classList.add("hidden");
             }
-
         }
     }
 

@@ -1,16 +1,16 @@
 class Scene {
-    constructor( gravity) {
+    constructor(  sceneNb) {
+
         this.objects = [];
         this.offsets={
             offsetBg:0,
             offsetMg:0,
             offsetFg:0,
         };
+        this.sceneNb = sceneNb;
 
-        this.backgroundSrc = './js/images/backfull.png';
-        this.foregroundSrc = './js/images/front.png';
-        this.middlegroundSrc = './js/images/mid.png';
 
+        this.changeScene(sceneNb);
     }
 
     update() {
@@ -43,6 +43,44 @@ class Scene {
                 this.objects.splice(i,1);
             }
         }
+    }
+
+    changeScene(nbScene){
+        this.sceneNb = nbScene;
+        name = SUITESCENE[nbScene];
+
+        switch (name) {
+            case "FORET":
+                this.backgroundSrc = './js/images/backfull.png';
+                pnj.name = "Kiwi";
+                pnj.infected = false;
+                break;
+            case "MAGASIN":
+                this.backgroundSrc = './js/images/bar.png';
+                pnj.name = "Tomate";
+
+                break;
+            case "BIBLIO":
+                this.backgroundSrc = './js/images/bar.png';
+                pnj.name = "Pomme";
+                break;
+            case "BAR":
+                this.backgroundSrc = './js/images/bar.png';
+                pnj.name = "Poire";
+                pnj.pos = {x: 300, y: 100};
+                pnj.infected = false;
+
+                player.protected = false;
+                break;
+        }
+        for(let i=0; i<player.history.length; i++) {
+            if (player.history.pnj === pnj.name) {
+                pnj.triggered = true;
+            }
+        }
+        document.getElementById("objectifName").innerText = "Aller parler à " + pnj.name;
 
     }
+
+
 }

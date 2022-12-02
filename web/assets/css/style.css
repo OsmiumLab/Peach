@@ -97,6 +97,18 @@ strong{
     background-color: pink;
     color: #8d0044;
 }
+#protection{
+    position: fixed;
+    right : 20px;
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: pink;
+    color: #8d0044;
+    top:50px;
+}
 
 #keysInstruction{
     position: fixed;
