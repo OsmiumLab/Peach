@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CONNECTION TO METAMASK</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+    <style>
+        body {
+            background-color: palevioletred;
+            font-size: 33px;
+            text-align: center;
+        }
+        button {
+            background-color: aquamarine;
+            font-size: 33px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+        button:hover {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+	<button onclick="connectMetamask()">CONNECT TO METAMASK</button> <br>
+	<p id="accountArea"></p>
+	<button onclick="connectContract()">CONNECT TO CONTRACT</button> <br>
+	<p id="contractArea"></p>
+	<button onclick="getMessages()">getMessages</button> <br>
+	<p id="dataArea"></p>
+
+    <input type="text" id="getNameText"></input>
+    <button onclick="getName()">getName</button>
+    <p id="name"></p>
+
+    <input type="text" id="claimCodeText" placeholder="code"></input>
+    <input type="text" id="team" placeholder="team name"></input>
+    <button onclick="claimCode()">claimCode</button>
+
+    <input type="text" id="getTeamName"></input>
+    <button onclick="getPoints()">getPointsTeam</button>
+    <p id="teamName"></p>
+
+
+
+    <script>
+        let account;
+        const connectMetamask = async () => {
+            if(window.ethereum !== "undefined") {
+                const accounts = await ethereum.request({method: "eth_requestAccounts"});
+                account = accounts[0];
+                document.getElementById("accountArea").innerHTML = account;
+            }
+        }
+
+        const connectContract = async () => {
+            const ABI = [{
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_code",
+          "type": "string"
+        }
+      ],
+      "name": "addCode",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "name": "addOwner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "codeEntry",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "teamName",
+          "type": "string"
+        }
+      ],
+      "name": "claimCode",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getMessages",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "addrSender",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "msg",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct TopSecret.Message[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_who",
+          "type": "address"
+        }
+      ],
+      "name": "getName",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_team",
+          "type": "string"
+        }
+      ],
+      "name": "getPoints",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "",
+          "type": "int256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }];
+            const Address = "0x99257524a83e564b795a30cE0577795eE92ce874";
+            window.web3 = await new Web3(window.ethereum);
+            window.contract = await new window.web3.eth.Contract( ABI, Address, {
+                from: account,
+            }); 
+            document.getElementById("contractArea").innerHTML = "connected to smart contract";
+        }
+
+        const getMessages = async () => {
+            const data = await window.contract.methods.getMessages().call();
+            document.getElementById("dataArea").innerHTML = data;
+        }
+
+        const getName = async () => {
+            var truc = document.getElementById("getNameText").value;
+            const data = await window.contract.methods.getName(truc).call();
+            document.getElementById("name").innerHTML = data;
+        }
+
+        const claimCode = async () => {
+            var code = document.getElementById("claimCodeText").value;
+            var team = document.getElementById("team").value;
+
+            await window.contract.methods.claimCode(code,team).send();
+        }
+
+        const getPoints = async () => {
+            var code = document.getElementById("getTeamName").value;
+
+            var response = await window.contract.methods.getPoints(code).call();
+            document.getElementById("teamName").innerHTML = response;
+        }
+
+
+    </script>
+</body>
+</html>
