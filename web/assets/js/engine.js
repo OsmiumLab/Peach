@@ -12,7 +12,10 @@ const player = new Player({
     bounds: {
         height: 50,
         width: 50
-    }
+    },
+    scale: 1,
+    framesMax: 4
+
 });
 
 const pnj = new Pnj({
@@ -91,9 +94,9 @@ window.addEventListener('resize', () => {
 
 });
 
-const scene = new Scene('blue', 2);
+const scene = new Scene('./images/back.png', 2);
 scene.addObject(player);
-scene.addObject(pnj)
+//scene.addObject(pnj)
 
 //listen to click once and use animate function
 canvas.addEventListener('click', () => {
@@ -101,22 +104,50 @@ canvas.addEventListener('click', () => {
 }, {once: true});
 
 
-function animate() {
-    window.requestAnimationFrame(animate);
+function loop(){
     if (KEYS['up']) {
-
         player.jump();
+
     }
     if (KEYS['down']) {
 
     }
     if (KEYS['left']) {
-        player.moveLeft();
+
+        player.velocity.x=Math.abs(player.velocity.x)*-1;
+        player.move();
+        scene.offsets.offsetBg++;
+        scene.offsets.offsetMg+=2;
+        scene.offsets.offsetFg+=5;
     }
     if (KEYS['right']) {
-        player.moveRight();
+        player.velocity.x=Math.abs(player.velocity.x);
+        player.move();
+        scene.offsets.offsetBg--;
+        scene.offsets.offsetMg-=2;
+        scene.offsets.offsetFg-=5;
+    }
+    if(!(KEYS['left'] || KEYS['right'] || KEYS['up'] || KEYS['down'])){
+        player.idle();
     }
     player.fall();
     scene.update();
 }
+
+
+let now;
+const fps = 90;
+let then = Date.now();
+
+function animate() {
+    now = Date.now();
+    let delta = now - then;
+    if(delta > 1000/fps){
+        then = now;
+        loop();
+    }
+    window.requestAnimationFrame(animate);
+
+}
+
 

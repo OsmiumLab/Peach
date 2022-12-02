@@ -1,5 +1,5 @@
 class Pnj {
-    constructor({posX, bounds, choices, name , infected}) {
+    constructor({posX, bounds, choices, name , infected, imageSrc}) {
         this.bounds = bounds;
         this.pos = {x: posX, y: canvas.height - 100 - this.bounds.height};
         this.triggered = false;
@@ -7,7 +7,8 @@ class Pnj {
         this.choices = choices;
         this.name = name;
         this.infected = infected;
-        this.message = "Press E to talk";
+        this.image = new Image();
+        this.image.src = imageSrc;
     }
 
     draw() {
