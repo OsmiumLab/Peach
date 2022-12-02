@@ -1,5 +1,5 @@
 class Pnj {
-    constructor({posX, bounds, choices, name , infected, imageSrc}) {
+    constructor({posX, bounds, choices, name , infected}) {
         this.bounds = bounds;
         this.pos = {x: posX, y: canvas.height - 100 - this.bounds.height};
         this.triggered = false;
@@ -7,13 +7,32 @@ class Pnj {
         this.choices = choices;
         this.name = name;
         this.infected = infected;
-        this.image = new Image();
-        this.image.src = imageSrc;
+
+        this.curFrame = 0;
     }
 
     draw() {
-        ctx.fillStyle = "purple";
-        ctx.fillRect(this.pos.x, this.pos.y, this.bounds.width, this.bounds.height);
+        switch(this.name){
+            case "Tomate":
+                this.animateTomate(this.curFrame);
+                this.curFrame++;
+                if(this.curFrame > 33) this.curFrame = 0;
+                break;
+            default:
+                console.log("test");
+                break;
+
+        }
+    }
+
+    animateTomate(frameIndex) {
+        const spritesheet = new Image();
+        spritesheet.src = "./js/images/tomato.png";
+
+        ctx.drawImage(
+            spritesheet,
+            frameIndex * 59, 0 , 59, 67, this.pos.x, this.pos.y, 59, 67
+        )
     }
 
     update() {
@@ -53,4 +72,6 @@ class Pnj {
 
         }
     }
+
+
 }

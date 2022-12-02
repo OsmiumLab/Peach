@@ -25,7 +25,7 @@ const pnj = new Pnj({
         choice1: "Je suis timide",
         choice2: "Faisons l'amour",
     },
-    name : "Roger",
+    name : "Tomate",
     infected : 1
 });
 
@@ -96,7 +96,7 @@ window.addEventListener('resize', () => {
 
 const scene = new Scene('./images/back.png', 2);
 scene.addObject(player);
-//scene.addObject(pnj)
+scene.addObject(pnj)
 
 //listen to click once and use animate function
 canvas.addEventListener('click', () => {
@@ -116,16 +116,22 @@ function loop(){
 
         player.velocity.x=Math.abs(player.velocity.x)*-1;
         player.move();
+        /*
         scene.offsets.offsetBg++;
         scene.offsets.offsetMg+=2;
         scene.offsets.offsetFg+=5;
+
+         */
     }
     if (KEYS['right']) {
         player.velocity.x=Math.abs(player.velocity.x);
         player.move();
+        /*
         scene.offsets.offsetBg--;
         scene.offsets.offsetMg-=2;
         scene.offsets.offsetFg-=5;
+
+         */
     }
     if(!(KEYS['left'] || KEYS['right'] || KEYS['up'] || KEYS['down'])){
         player.idle();
@@ -136,7 +142,7 @@ function loop(){
 
 
 let now;
-const fps = 90;
+const fps = 60;
 let then = Date.now();
 
 function animate() {

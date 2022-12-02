@@ -24,7 +24,6 @@ class Scene {
         ctx.drawImage(this.middleground, this.offsets.offsetMg, 0, canvas.width, canvas.height);
         ctx.drawImage(this.foreground, this.offsets.offsetFg, 0, canvas.width, canvas.height);
         for (let i = 0; i < this.objects.length; i++) {
-
             this.objects[i].update();
             if(this.objects[i] instanceof Pnj){
                 this.objects[i].collide(player);
