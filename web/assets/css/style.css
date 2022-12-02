@@ -2,6 +2,11 @@
 
 body{
     margin: 0;
+    overflow: hidden;
+}
+
+.hidden{
+    display: none !important;
 }
 
 p, strong{
@@ -17,6 +22,25 @@ strong{
     -webkit-text-stroke: 1px #fff;
 }
 
+#choix{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#container{
+    display: flex;
+    flex-direction: row;
+    width:70%;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 100Px;
+}
+
 #objectif{
     position: fixed;
     left: 20px;
@@ -29,4 +53,8 @@ strong{
 #pepin{
     position: fixed;
     right : 20px;
+}
+
+#keysInstruction{
+    position: fixed;
 }

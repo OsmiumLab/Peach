@@ -7,7 +7,7 @@ canvas.width = window.innerWidth;
 
 
 const player = new Player({
-    pos: {x: canvas.width/2, y: 500},
+    pos: {x: canvas.width / 2, y: 500},
     velocity: {x: 10, y: 10},
     bounds: {
         height: 50,
@@ -15,7 +15,18 @@ const player = new Player({
     }
 });
 
-const pnj = new Pnj({posX: 0, bounds: {height: 50, width: 50}});
+const pnj = new Pnj({
+    posX: 0,
+    bounds: {height: 50, width: 50},
+    choices: {
+        choice1: "Je suis timide",
+        choice2: "Faisons l'amour",
+    },
+    name : "Roger",
+    infected : 1
+});
+
+let currentPnj;
 
 const KEYS = [];
 
@@ -33,31 +44,44 @@ document.addEventListener('keydown', (e) => {
         case 'ArrowRight':
             KEYS['right'] = true;
             break;
+        case 'e':
+            KEYS['e'] = true;
+            break;
     }
 });
 
-let lastkey = '';
 
 document.addEventListener('keyup', (e) => {
     switch (e.key) {
         case 'ArrowUp':
             KEYS['up'] = false;
-            lastkey = 'up';
             break;
         case 'ArrowDown':
             KEYS['down'] = false;
-            lastkey = 'down';
             break;
         case 'ArrowLeft':
             KEYS['left'] = false;
-            lastkey = 'left';
             break;
         case 'ArrowRight':
             KEYS['right'] = false;
-            lastkey = 'right';
             break;
+        case 'e':
+            KEYS['e'] = false;
+            break;
+
     }
 });
+
+document.getElementById("choix1").addEventListener("mousedown", function () {
+    player.chose(document.getElementById("choix1").innerHTML, 1);
+});
+
+document.getElementById("choix2").addEventListener("mousedown", function () {
+    player.chose(document.getElementById("choix2").innerHTML , 2);
+});
+
+//send a request to the server to provide the player's position with GET method
+
 
 //background
 
@@ -69,9 +93,13 @@ window.addEventListener('resize', () => {
 
 const scene = new Scene('blue', 2);
 scene.addObject(player);
-scene.addObject(pnj);
+scene.addObject(pnj)
 
-document.addEventListener("mousedown", animate);
+//listen to click once and use animate function
+canvas.addEventListener('click', () => {
+    animate();
+}, {once: true});
+
 
 function animate() {
     window.requestAnimationFrame(animate);
