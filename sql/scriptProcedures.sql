@@ -49,3 +49,26 @@ CREATE OR REPLACE PROCEDURE NDIAjouterEtapes(osef NUMBER, p_idFruit NDI_FRUITS.I
 BEGIN
     INSERT INTO NDI_ETAPES VALUES (ndi_seq_etapes_id.nextval, p_idFruit, p_idChoix, p_idJoueur);
 END;
+
+-- ############################################################
+-- # Procedures : Lecture Data
+-- ############################################################
+CREATE OR REPLACE PROCEDURE ListeJoueurParID(p_idJoueur NDI_JOUEUR.IDJOUEUR%TYPE) IS
+    CURSOR c1 IS
+        SELECT NJ.IDJOUEUR, NE.IDETAPE, NE.IDFRUIT, NE.IDCHOIX FROM NDI_JOUEUR NJ
+        JOIN NDI_ETAPES NE on NJ.IDJOUEUR = NE.IDJOUEUR
+        WHERE NJ.IDJOUEUR = p_idJoueur;
+BEGIN
+    FOR v1 IN c1 LOOP
+        IF v1.IDFRUIT = 5 THEN
+            DBMS_OUTPUT.PUT_LINE('https://www.pasteur.fr/fr/centre-medical/fiches-maladies/sida-vih');
+        ELSE IF v1.IDFRUIT = 2 THEN
+            DBMS_OUTPUT.PUT_LINE('https://www.moncorpsmacontraception.fr/methodes-contraceptives/preservatif-feminin'
+                                     || 'https://www.moncorpsmacontraception.fr/methodes-contraceptives/preservatif-masculin');
+        ELSE IF v1.IDFRUIT = 6 THEN
+            DBMS_OUTPUT.PUT_LINE('https://www.ameli.fr/assure/sante/themes/mst-ist/depistage');
+        END IF;
+        END IF;
+        END IF;
+    END LOOP;
+END;
