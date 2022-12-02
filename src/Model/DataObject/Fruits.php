@@ -8,12 +8,14 @@ class Fruits extends AbstractDataObject {
     private string $nomFruit;
     private int $tauxVerreDeTerre;
     private int $nbInteractions;
+    private int $nbPepins;
 
-    public function __construct(int $idFruit, string $nomFruit, int $tauxVerreDeTerre, int $nbInteractions) {
+    public function __construct(int $idFruit, string $nomFruit, int $tauxVerreDeTerre, int $nbInteractions, int $nbPepins) {
         $this->idFruit = $idFruit;
         $this->nomFruit = $nomFruit;
         $this->tauxVerreDeTerre = $tauxVerreDeTerre;
         $this->nbInteractions = $nbInteractions;
+        $this->nbPepins = $nbPepins;
     }
 
     public function formatTableau(): array {
@@ -22,6 +24,7 @@ class Fruits extends AbstractDataObject {
             "NOMFRUIT" => $this->getNomFruit(),
             "TAUXVERREDETERRE" => $this->getTauxVerreDeTerre(),
             "NBINTERACTIONS" => $this->getNbInteractions(),
+            "NBPEPINS" => $this->getNbPepins()
         );
     }
 
@@ -45,13 +48,8 @@ class Fruits extends AbstractDataObject {
         return $this->nbInteractions;
     }
 
-    public function setTauxVerreDeTerre(int $tauxVerreDeTerre): void
+    public function getNbPepins(): int
     {
-        $this->tauxVerreDeTerre = $tauxVerreDeTerre;
-    }
-
-    public function setNbInteractions(int $nbInteractions): void
-    {
-        $this->nbInteractions = $nbInteractions;
+        return $this->nbPepins;
     }
 }

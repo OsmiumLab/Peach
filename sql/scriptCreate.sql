@@ -10,6 +10,7 @@ CREATE TABLE NDI_Fruits(
    nomFruit VARCHAR(100) NOT NULL,
    tauxVerreDeTerre INT NOT NULL,
    nbInteractions INT NOT NULL,
+   nbPepins INT NOT NULL,
    PRIMARY KEY(idFruit)
 );
 
